@@ -7,7 +7,7 @@
 ## Таблиця внесків
 | Учасник | Роль у команді | Що зроблено | Артефакти / файли |
 |----------|----------------|-------------|-------------------|
-| Brytan Vitalii | Управління ресторанами та персоналом | Locations, Staff, Shifts, StaffShifts | dbml, TEAMWORK.md |
+| Brytan Vitalii | Управління ресторанами та персоналом | locations, staff, shifts, staff_shifts | dbml, TEAMWORK.md |
 | Shopiak Khrystyna | Меню та інгредієнти | ingredients, menu_ingredients, menu_items, menu_categories, location_ingredients | dbml, TEAMWORK.md |
 | Ivannikov Mykhailo | Замовлення та бронювання | Orders, Reservations, OrderItem, Tables, TablesReservation | dbml, TEAMWORK.md |
 | ... | ... | ... | ... |
