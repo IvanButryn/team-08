@@ -28,6 +28,7 @@
 
 -- [BrytanVitalii] - locations, staff, staff_shifts, shifts and indices
 -- [Khrystyna] - ingredients, menu_categories, menu_items, menu_ingredients tables and indices
+-- [Shyshka Tymofii] - customers, reviews tables and indices
 
 CREATE SCHEMA rest_manag;
 
@@ -114,6 +115,52 @@ CREATE TABLE rest_manag.location_ingredients (
   PRIMARY KEY (location_id, ingredient_id)
 );
 
+-- [Shyshka Tymofii]
+CREATE TABLE rest_manag.customers (
+    customer_id bigserial,
+
+    first_name varchar(100) NOT NULL,
+    last_name varchar(100) NOT NULL,
+    email varchar(255) NOT NULL,
+    phone_number varchar(30),
+    created_at timestamptz NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT pk_customers
+        PRIMARY KEY (customer_id),
+
+    CONSTRAINT uq_customers_email
+        UNIQUE (email)
+);
+
+
+CREATE TABLE rest_manag.reviews (
+    review_id bigserial,
+
+    customer_id bigint NOT NULL,
+    location_id bigint NOT NULL,
+    rating smallint NOT NULL,
+    comment text,
+    review_date timestamptz NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT pk_reviews
+        PRIMARY KEY (review_id),
+
+    CONSTRAINT fk_reviews_customer
+        FOREIGN KEY (customer_id)
+        REFERENCES rest_manag.customers(customer_id)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT,
+
+    CONSTRAINT fk_reviews_location
+        FOREIGN KEY (location_id)
+        REFERENCES rest_manag.locations(location_id)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT,
+
+    CONSTRAINT chk_reviews_rating
+        CHECK (rating BETWEEN 1 AND 5)
+);
+
 -- indices
 CREATE INDEX idx_staff_location
 ON rest_manag.staff(location_id);
@@ -126,3 +173,9 @@ ON rest_manag.menu_items(category_id);
 
 CREATE INDEX idx_location_ingredients_location
 ON rest_manag.location_ingredients(location_id);
+
+CREATE INDEX idx_reviews_customer
+ON rest_manag.reviews(customer_id);
+
+CREATE INDEX idx_reviews_location
+ON rest_manag.reviews(location_id);
