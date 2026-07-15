@@ -15,7 +15,7 @@
 //     [Ivan Butryn] — Inventory, Suppliers, SupplierContacts
 //     [Khrystyna Shopiak] — Ingredients, MenuIngredients, MenuItems, MenuCategories, LocationIngredients
        [Ivannikov Mykhailo] - Orders, Reservations, Tables, TablesReservation, OrderItem
-//     [Ім'я] — назви таблиць через кому
+//     [Shyshka Tymofii] — Customers, Reviews
 //
 //  4. У цьому файлі додайте DBML-код вашої схеми.
 //     Якщо використовуєте dbdiagram.io — там є кнопка експорту в DBML.
